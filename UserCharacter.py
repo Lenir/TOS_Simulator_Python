@@ -88,6 +88,9 @@ class UserCharacter:
         skills = self.getAvailableActiveSkills()
         for skill in skills:
             result += "[" + str(skill) + "] "
+            for passive in skill.passiveSkills:
+                result += "[" + str(passive) + "] "
+            result += "\n"
         print(result)
 
     def printAvailablePassiveSkills(self):
