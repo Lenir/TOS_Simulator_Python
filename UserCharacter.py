@@ -45,6 +45,7 @@ class UserCharacter:
                 self.getJobInAvailables(jobRank).setJobRankNum(rankNum + 1)
         else:
             self.jobStack.append(jobRank)
+            self.getJobInAvailables(jobRank).setJobRankNum(2)
 
     def getJobClass(self, jobRank):
         for job in self.jobStack:
@@ -62,8 +63,9 @@ class UserCharacter:
             jobs = [Cleric(), Krivi(), Priest(), Bokor(), Dievdirbys(), Paladin(), Sadhu(),
                     Monk(), Pardoner(), Oracle(), Druid(), PlagueDoctor(), Kabbalist(), Daoshi(), Inquisitor(),
                     Zealot()]
-            self.stacksJobRank(Cleric())
             self.availableJobs.extend(jobs)
+            self.stacksJobRank(Cleric())
+
 
     def printAvaliableJobs(self):
         result = "Avaliables : "
