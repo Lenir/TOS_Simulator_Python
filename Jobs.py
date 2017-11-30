@@ -15,7 +15,6 @@ class JobClass:
     def increase1rank(self):
         if self.jobRankNum is not MAX_JOB_RANK:
             self.jobRankNum += 1
-            self.unlockSkills()
         else:
             print("Already in Maximum Job Rank!")
 
@@ -24,7 +23,6 @@ class JobClass:
             print("Invalid rank number!")
         else:
             self.jobRankNum = num
-            self.unlockSkills()
 
     def increase1ClassLevel(self):
         if self.classLevel is not 15:
@@ -40,7 +38,7 @@ class JobClass:
         return self.__class__.__name__ + " " + str(self.jobRankNum) + " rank, " + str(self.classLevel) + "Lv"
 
     def unlockSkills(self):
-        skills = list(filter(lambda skill : skill.availableRank == self.jobRankNum, self.lockedActiveSkills))
+        skills = list(filter(lambda skill : skill.availableRank <= self.jobRankNum, self.lockedActiveSkills))
         for unlocked in skills:
             self.lockedActiveSkills.remove(unlocked)
             self.availableActiveSkills.add(unlocked)

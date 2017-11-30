@@ -46,6 +46,7 @@ class UserCharacter:
         else:
             self.jobStack.append(jobRank)
             self.getJobInAvailables(jobRank).setJobRankNum(2)
+        self.getLastJobStack().unlockSkills()
 
     def getJobClass(self, jobRank):
         for job in self.jobStack:
@@ -70,7 +71,8 @@ class UserCharacter:
     def printAvaliableJobs(self):
         result = "Avaliables : "
         for job in self.availableJobs:
-            result += "[" + str(job.__class__.__name__) + " " +str(job.jobRankNum) + "rank" +"] "
+            if job.unlockRank <= self.rankNum:
+                result += "[" + str(job.__class__.__name__) + " " +str(job.jobRankNum) + "rank" +"] "
         print(result)
 
     def printJobStacks(self):

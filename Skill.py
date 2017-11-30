@@ -7,6 +7,7 @@ class Skill:
 
     def setMaxLevel(self, maxLevel):
         self.maxLevel = maxLevel
+        return self
 
     def __str__(self):
         return self.name

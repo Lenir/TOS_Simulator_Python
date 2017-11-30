@@ -10,8 +10,8 @@ class TestCharRank(unittest.TestCase):
         user.setMaxClassLevel()
         user.increase1rank(Krivi())
 
-        user.printJobStacks()
-        user.printAvailableSkills()
+        # user.printJobStacks()
+        # user.printAvailableSkills()
         self.assertEqual(2, user.rankNum)
 
     def test2RankCleric(self):
@@ -21,8 +21,8 @@ class TestCharRank(unittest.TestCase):
         user.setMaxClassLevel()
         user.increase1rank(Cleric())
 
-        user.printJobStacks()
-        user.printAvailableSkills()
+        # user.printJobStacks()
+        # user.printAvailableSkills()
         self.assertEqual(2, user.jobStack[1].jobRankNum)
 
     def test3RankCKC(self):
@@ -35,8 +35,8 @@ class TestCharRank(unittest.TestCase):
         user.setMaxClassLevel()
         user.increase1rank(Cleric())
 
-        user.printJobStacks()
-        user.printAvailableSkills()
+        # user.printJobStacks()
+        # user.printAvailableSkills()
         self.assertEqual(2, user.jobStack[2].jobRankNum)
 
     def test4RankCKKC(self):
@@ -52,9 +52,9 @@ class TestCharRank(unittest.TestCase):
         user.setMaxClassLevel()
         user.increase1rank(Cleric())
 
-        user.printJobStacks()
-        user.printAvailableSkills()
-        user.printAvaliableJobs()
+        # user.printJobStacks()
+        # user.printAvailableSkills()
+        # user.printAvaliableJobs()
         self.assertEqual(2, user.jobStack[2].jobRankNum)
 
     def test5RankCKKCC(self):
@@ -73,9 +73,9 @@ class TestCharRank(unittest.TestCase):
         user.setMaxClassLevel()
         user.increase1rank(Cleric())
 
-        user.printJobStacks()
-        user.printAvailableSkills()
-        user.printAvaliableJobs()
+        # user.printJobStacks()
+        # user.printAvailableSkills()
+        # user.printAvaliableJobs()
         self.assertEqual(2, user.jobStack[2].jobRankNum)
 
 
@@ -95,10 +95,43 @@ class TestCharRank(unittest.TestCase):
         user.setMaxClassLevel()
         user.increase1rank(Paladin())
 
+        # user.printJobStacks()
+        # user.printAvailableSkills()
+        # user.printAvaliableJobs()
+        self.assertEqual(2, user.jobStack[2].jobRankNum)
+
+    def test9RankCCCBBBPPP(self):
+        user = UserCharacter()
+        user.setJobClass("Cleric")
+
+        user.setMaxClassLevel()
+        user.increase1rank(Cleric())
+
+        user.setMaxClassLevel()
+        user.increase1rank(Cleric())
+
+        user.setMaxClassLevel()
+        user.increase1rank(Bokor())
+
+        user.setMaxClassLevel()
+        user.increase1rank(Bokor())
+
+        user.setMaxClassLevel()
+        user.increase1rank(Bokor())
+
+        user.setMaxClassLevel()
+        user.increase1rank(PlagueDoctor())
+
+        user.setMaxClassLevel()
+        user.increase1rank(PlagueDoctor())
+
+        user.setMaxClassLevel()
+        user.increase1rank(PlagueDoctor())
+
         user.printJobStacks()
         user.printAvailableSkills()
         user.printAvaliableJobs()
-        self.assertEqual(2, user.jobStack[2].jobRankNum)
+        self.assertEqual("PlagueDoctor", user.getLastJobStack().__class__.__name__)
 
 if __name__ == "__main__":
     unittest.main()
