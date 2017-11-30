@@ -7,7 +7,13 @@ class Cleric(JobClass):
         super(Cleric, self).__init__()
         skills = [Skill("Heal", 1), Skill("Cure", 1), Skill("Deprotected Zone", 1), Skill("Safety Zone", 1),
                         Skill("Divine Might", 2), Skill("Fade", 2), Skill("Patron Saint", 3)]
-        self.lockedActiveSkills.extend(skills)
+        passiveSkills = [Skill("Divine Might - Demons Damage", 2), Skill("Deprotected Zone : Improve", 1), Skill("Deprotected Zone : Sword Attack", 1), Skill("", 1),
+                         Skill("Deprotected Zone : Holding Time", 1), Skill("Weapon Swap", 2), Skill("Safety Zone : Defence Count", 2),
+                         Skill("Safety Zone : Extend Range", 1), Skill("Patron Saint : Swap Target", 3), Skill("Patron Saint : Reduce Damage", 3),
+                         Skill("Cure : Improve", 1), Skill("Cure : Damage Period", 2), Skill("One handed blunt Mastery : Stun", 1), Skill("Heal : Improve", 1),
+                         Skill("Heal : Additional Generate", 1), Skill("Heal : Remove Damage", 1), ]
+        self.skills.setLockedActiveSkills(skills)
+        self.skills.setLockedPassiveSkills(passiveSkills)
         self.setJobRankNum(rankNum)
 
 
@@ -17,7 +23,11 @@ class Krivi(JobClass):
         self.unlockRank = 2
         skills = [Skill("Aukuras", 1), Skill("Daino", 1), Skill("Zaibas", 1), Skill("Zalciai", 1),
                         Skill("Divine Stigma", 2), Skill("Melstis", 3)]
-        self.lockedActiveSkills.extend(skills)
+        passiveSkills = [Skill("", 1), Skill("", 1), Skill("", 1), Skill("", 1), Skill("", 1), Skill("", 1),
+                         Skill("", 1),
+                         Skill("", 1), Skill("", 1), Skill("", 1), Skill("", 1), Skill("", 1), Skill("", 1),
+                         Skill("", 1), ]
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Priest(JobClass):
@@ -26,7 +36,7 @@ class Priest(JobClass):
         self.unlockRank = 2
         skills = [Skill("Monstrance", 1), Skill("Resurrection", 1), Skill("Aspersion", 1), Skill("Blessing", 1),
                         Skill("Mass Heal", 2), Skill("Revive", 2), Skill("Sacrament", 2), Skill("Stone Skin", 3)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Bokor(JobClass):
@@ -35,7 +45,7 @@ class Bokor(JobClass):
         self.unlockRank = 3
         skills = [Skill("Effigy", 1), Skill("Hexing", 1), Skill("Tet Mamak La", 1), Skill("Zombify", 1),
                         Skill("Bwa Kayiman", 2), Skill("Mackangdal", 2), Skill("Samdiveve", 2), Skill("Oguveve", 3), Skill("Damballa", 3)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Dievdirbys(JobClass):
@@ -44,7 +54,7 @@ class Dievdirbys(JobClass):
         self.unlockRank = 3
         skills = [Skill("Carve", 1), Skill("Carve Laima", 1), Skill("Carve Vakarine", 1), Skill("Carva Zemina", 1),
                         Skill("Carve Aukuras Koks", 2), Skill("Carve Owl", 2), Skill("Carve Ausirine", 3)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Paladin(JobClass):
@@ -53,7 +63,7 @@ class Paladin(JobClass):
         self.unlockRank = 4
         skills = [Skill("Resist Elements", 1), Skill("Restoration", 1), Skill("Smite", 1), Skill("Turn Undead", 1),
                         Skill("Conversion", 2),Skill("Barrier", 3)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Sadhu(JobClass):
@@ -62,7 +72,7 @@ class Sadhu(JobClass):
         self.unlockRank = 4
         skills = [Skill("Astral Body Explosion", 1), Skill("Out of body", 1), Skill("Prakriti", 1), Skill("Vashita Siddhi", 1),
                         Skill("Possession", 2),Skill("Transmit Prana", 3)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Monk(JobClass):
@@ -71,7 +81,7 @@ class Monk(JobClass):
         self.unlockRank = 5
         skills = [Skill("Double Punch", 1), Skill("Hand Knife", 1), Skill("Iron Skin", 1), Skill("Palm Strike", 1),
                         Skill("1 Inch Punch", 2), Skill("Energy Blast", 2), Skill("God Finger Flicking", 2), Skill("Golden Bell Shield", 3)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Pardoner(JobClass):
@@ -80,7 +90,7 @@ class Pardoner(JobClass):
         self.unlockRank = 5
         skills = [Skill("Discern Evil", 1), Skill("Increase Magic DEF", 1), Skill("Indulgentia", 1), Skill("Simony", 1),
                         Skill("Spell Shop", 2).setMaxLevel(5), Skill("Oblation", 2), Skill("Dekatos", 3)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Oracle(JobClass):
@@ -90,7 +100,7 @@ class Oracle(JobClass):
         skills = [Skill("Arcane Energy", 1), Skill("Change", 1), Skill("Clairvoyance", 1).setMaxLevel(1), Skill("Counter Spell", 1),
                         Skill("Prophecy", 1), Skill("Resetting", 1).setMaxLevel(1), Skill("Forecast", 1).setMaxLevel(1), Skill("Death Verdict", 2), Skill("Switch Gender", 3).setMaxLevel(1),
                         Skill("Twist of Fate", 3), Skill("Foretell", 3)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Druid(JobClass):
@@ -99,7 +109,7 @@ class Druid(JobClass):
         self.unlockRank = 6
         skills = [Skill("Carnivory", 1), Skill("Chorstasmata", 1), Skill("Shape Shifting", 1), Skill("Telepath", 1),
                         Skill("Transform", 2), Skill("Sterea Trofh", 2), Skill("Henge Stone", 3), Skill("Lycanthropy", 3)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class PlagueDoctor(JobClass):
@@ -108,7 +118,7 @@ class PlagueDoctor(JobClass):
         self.unlockRank = 7
         skills = [Skill("Fumigate", 1), Skill("Healing Factor", 1), Skill("Incineration", 1), Skill("Beak Mask", 1), Skill("Bloodletting", 1).setMaxLevel(5), Skill("Pandemic", 1),
                         Skill("Plague Vapours", 2), Skill("Disenchent", 2), Skill("Methadone", 3)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Kabbalist(JobClass):
@@ -117,7 +127,7 @@ class Kabbalist(JobClass):
         self.unlockRank = 7
         skills = [Skill("Ayin sof", 1), Skill("Gematria", 1).setMaxLevel(1), Skill("Merkabah", 1), Skill("Notarikon", 1).setMaxLevel(1), Skill("Reduce Level", 1).setMaxLevel(1), Skill("Revenged Seven Fold", 1),
                         Skill("Multiple Hit Chance", 2), Skill("Clone", 2), Skill("Gevura", 3)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Daoshi(JobClass):
@@ -126,7 +136,7 @@ class Daoshi(JobClass):
         self.unlockRank = 8
         skills = [Skill("Begone Demon", 1), Skill("Creeping Death", 1).setMaxLevel(1), Skill("Dark sight", 1), Skill("Storm Calling", 1), Skill("Tri Disaster", 1),
                         Skill("Divine Punishment", 2), Skill("Elevate magic square", 2)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Inquisitor(JobClass):
@@ -136,7 +146,7 @@ class Inquisitor(JobClass):
         self.unlockRank = 8
         skills = [Skill("Breaking Wheel", 1), Skill("God Smash", 1), Skill("Malleus Maleficarum", 1), Skill("Pear of Anguish", 1),
                         Skill("Iron Maiden", 2), Skill("Judgement", 2)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)
 
 
 class Zealot(JobClass):
@@ -146,4 +156,4 @@ class Zealot(JobClass):
         self.unlockRank = 8
         skills = [Skill("Beady Eyed", 1), Skill("Fanaticism", 1), Skill("Immolation", 1), Skill("Invulnerable", 1),
                   Skill("Blind Faith", 2), Skill("Fanatic Illusion", 2)]
-        self.lockedActiveSkills.extend(skills)
+        self.skills.setLockedActiveSkills(skills)

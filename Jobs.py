@@ -1,3 +1,4 @@
+from Skills import *
 MAX_JOB_RANK = 3
 
 class JobClass:
@@ -6,11 +7,13 @@ class JobClass:
         self.unlockRank = unlockRank
         self.classLevel = 1
         self.leftSkillPoint = 1
-        self.activeSkills = []
-        self.passiveSkills = []
-        self.availableActiveSkills = set()
-        self.availablePassiveSkills = []
-        self.lockedActiveSkills = []
+        self.skills = Skills()
+        # self.activeSkills = []
+        # self.passiveSkills = []
+        # self.availableActiveSkills = set()
+        # self.availablePassiveSkills = []
+        # self.lockedActiveSkills = []
+        # self.lockedPassiveSkills = []
 
     def increase1rank(self):
         if self.jobRankNum is not MAX_JOB_RANK:
@@ -38,7 +41,9 @@ class JobClass:
         return self.__class__.__name__ + " " + str(self.jobRankNum) + " rank, " + str(self.classLevel) + "Lv"
 
     def unlockSkills(self):
-        skills = list(filter(lambda skill : skill.availableRank <= self.jobRankNum, self.lockedActiveSkills))
+        skills = list(filter(lambda skill : skill.availableRank <= self.jobRankNum, self.skills.lockedActiveSkills))
+        passiveSkills = list(filter(lambda skill : skill.availableRank <= self.jobRankNum, self.skills.lockedPassiveSkills))
         for unlocked in skills:
-            self.lockedActiveSkills.remove(unlocked)
-            self.availableActiveSkills.add(unlocked)
+            self.skills.unlockActiveSkill(unlocked)
+        for unlocked in passiveSkills:
+            self.skills.unlockPassiveSkill(unlocked)

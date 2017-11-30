@@ -69,7 +69,7 @@ class UserCharacter:
 
 
     def printAvaliableJobs(self):
-        result = "Avaliables : "
+        result = "Avaliable Jobs : "
         for job in self.availableJobs:
             if job.unlockRank <= self.rankNum:
                 result += "[" + str(job.__class__.__name__) + " " +str(job.jobRankNum) + "rank" +"] "
@@ -83,9 +83,16 @@ class UserCharacter:
             i += 1
         print(result)
 
-    def printAvailableSkills(self):
-        result = ""
+    def printAvailableActiveSkills(self):
+        result = "Active : "
         skills = self.getAvailableActiveSkills()
+        for skill in skills:
+            result += "[" + str(skill) + "] "
+        print(result)
+
+    def printAvailablePassiveSkills(self):
+        result = "Passive : "
+        skills = self.getAvailablePassiveSkills()
         for skill in skills:
             result += "[" + str(skill) + "] "
         print(result)
@@ -93,7 +100,14 @@ class UserCharacter:
     def getAvailableActiveSkills(self):
         skills = list()
         for job in self.getMaxRanks():
-            for skill in job.availableActiveSkills:
+            for skill in job.skills.availableActiveSkills:
+                skills.append(skill)
+        return skills
+
+    def getAvailablePassiveSkills(self):
+        skills = list()
+        for job in self.getMaxRanks():
+            for skill in job.skills.availablePassiveSkills:
                 skills.append(skill)
         return skills
 

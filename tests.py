@@ -129,7 +129,8 @@ class TestCharRank(unittest.TestCase):
         user.increase1rank(PlagueDoctor())
 
         user.printJobStacks()
-        user.printAvailableSkills()
+        user.printAvailableActiveSkills()
+        user.printAvailablePassiveSkills()
         user.printAvaliableJobs()
         self.assertEqual("PlagueDoctor", user.getLastJobStack().__class__.__name__)
 
