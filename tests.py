@@ -57,5 +57,26 @@ class TestCharRank(unittest.TestCase):
         user.printAvaliableJobs()
         self.assertEqual(2, user.jobStack[2].jobRankNum)
 
+    def test5RankCKKCC(self):
+        user = UserCharacter()
+        user.setJobClass("Cleric")
+
+        user.setMaxClassLevel()
+        user.increase1rank(Krivi())
+
+        user.setMaxClassLevel()
+        user.increase1rank(Krivi())
+
+        user.setMaxClassLevel()
+        user.increase1rank(Cleric())
+
+        user.setMaxClassLevel()
+        user.increase1rank(Cleric())
+
+        user.printJobStacks()
+        user.printAvailableSkills()
+        user.printAvaliableJobs()
+        self.assertEqual(2, user.jobStack[2].jobRankNum)
+
 if __name__ == "__main__":
     unittest.main()

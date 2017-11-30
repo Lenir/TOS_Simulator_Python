@@ -21,9 +21,7 @@ class UserCharacter:
         if self.rankNum is not MAX_RANK:
             if self.getLastJobStack().classLevel is 15:
                 self.rankNum += 1
-                jobRankNum = self.getSameClassNum(job) + 1
                 self.stacksJobRank(job)
-                self.getLastJobStack().setJobRankNum(jobRankNum)
             else:
                 print("not in Maximum Class Level!")
         else:
@@ -37,25 +35,40 @@ class UserCharacter:
         return result
 
     def stacksJobRank(self, jobRank):
-        self.jobStack.append(jobRank)
+        if self.isSameJobIn(jobRank):
+            rankNum = self.getSameClassNum(jobRank) + 1
+            self.jobStack.append(jobRank)
+            self.getLastJobStack().setJobRankNum(rankNum)
+            if rankNum == 3:
+                self.availableJobs.remove(self.getJobInAvailables(jobRank))
+            else:
+                self.getJobInAvailables(jobRank).setJobRankNum(rankNum + 1)
+        else:
+            self.jobStack.append(jobRank)
 
     def getJobClass(self, jobRank):
         for job in self.jobStack:
             if job.__class__ is jobRank.__class__:
                 return job
 
+    def getJobInAvailables(self, jobRank):
+        for job in self.availableJobs:
+            if jobRank.__class__ == job.__class__:
+                return job
+
     def setJobClass(self, jobClass):
         if jobClass is "Cleric":
             self.jobClass = Cleric()
-            self.stacksJobRank(Cleric())
             jobs = [Cleric(), Krivi(), Priest(), Bokor(), Dievdirbys(), Paladin(), Sadhu(),
-                        Monk(), Pardoner(), Oracle(), Druid(), PlagueDoctor(), Kabbalist(), Daoshi(), Inquisitor(), Zealot()]
+                    Monk(), Pardoner(), Oracle(), Druid(), PlagueDoctor(), Kabbalist(), Daoshi(), Inquisitor(),
+                    Zealot()]
+            self.stacksJobRank(Cleric())
             self.availableJobs.extend(jobs)
 
     def printAvaliableJobs(self):
-        result = ""
+        result = "Avaliables : "
         for job in self.availableJobs:
-            result += "[" + ": " + str(job) + job.jobRankNum + "rank" +"] "
+            result += "[" + str(job.__class__.__name__) + " " +str(job.jobRankNum) + "rank" +"] "
         print(result)
 
     def printJobStacks(self):
